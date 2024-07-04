@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "11fb1c71-5a08-4bcd-b411-226ed19c523d",
+		"name": "kotlin  API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28237617"
+	},
+	"item": [
+		{
+			"name": "Topics",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/topic",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"topic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find by uuid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"teste\",\r\n    \"menssage\": \"realizando teste\",\r\n    \"uuidCourse\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n    \"uuidUser\": \"505aad6a-b1a4-4677-942b-22096bc7e352\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/topic/:uuidTopic",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"topic",
+								":uuidTopic"
+							],
+							"variable": [
+								{
+									"key": "uuidTopic",
+									"value": "11ab5e85-5a02-4d2f-8f86-a461fa2d4f9a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var location = pm.response.headers.get('Location');\r",
+									"pm.environment.set('lasted-create', location);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"teste\",\r\n    \"menssage\": \"realizando teste\",\r\n    \"uuidCourse\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n    \"uuidUser\": \"505aad6a-b1a4-4677-942b-22096bc7e352\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/topic",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"topic"
+							]
+						},
+						"description": "\n### Create a New Topic\n\nThis endpoint allows you to create a new topic by sending a POST request to the specified URL.\n\n#### Request Body\n- `title` (string): The title of the topic.\n- `menssage` (string): The message content for the topic.\n- `uuidCourse` (string): The UUID of the course associated with the topic.\n- `uuidUser` (string): The UUID of the user creating the topic.\n\n#### Response\nUpon successful creation, the server responds with a status code of 201 and a JSON object containing the details of the newly created topic:\n- `uuid` (string): The UUID of the created topic.\n- `title` (string): The title of the topic.\n- `menssage` (string): The message content of the topic.\n- `status` (string): The status of the topic.\n- `dateCreate` (string): The date and time of the topic creation.\n\n#### Setting Collection Variable\nTo set a variable in a collection, you can use the collection level pre-request script. In the collection, go to the \"Pre-request Scripts\" tab and add the script to set the variable there. For example, you can set a variable called \"baseUrl\" using the following script:\n```javascript\npm.collectionVariables.set(\"baseUrl\", \"https://api.example.com\");\n```\n"
+					},
+					"response": []
+				},
+				{
+					"name": "get lasted create",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"teste\",\r\n    \"menssage\": \"realizando teste\",\r\n    \"uuidCourse\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n    \"uuidUser\": \"505aad6a-b1a4-4677-942b-22096bc7e352\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lasted-create}}",
+							"host": [
+								"{{lasted-create}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"teste\",\r\n    \"menssage\": \"realizando teste\",\r\n    \"uuidCourse\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n    \"uuidUser\": \"505aad6a-b1a4-4677-942b-22096bc7e352\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/topic",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"topic"
+							]
+						},
+						"description": "\n### Create a New Topic\n\nThis endpoint allows you to create a new topic by sending a POST request to the specified URL.\n\n#### Request Body\n- `title` (string): The title of the topic.\n- `menssage` (string): The message content for the topic.\n- `uuidCourse` (string): The UUID of the course associated with the topic.\n- `uuidUser` (string): The UUID of the user creating the topic.\n\n#### Response\nUpon successful creation, the server responds with a status code of 201 and a JSON object containing the details of the newly created topic:\n- `uuid` (string): The UUID of the created topic.\n- `title` (string): The title of the topic.\n- `menssage` (string): The message content of the topic.\n- `status` (string): The status of the topic.\n- `dateCreate` (string): The date and time of the topic creation.\n\n#### Setting Collection Variable\nTo set a variable in a collection, you can use the collection level pre-request script. In the collection, go to the \"Pre-request Scripts\" tab and add the script to set the variable there. For example, you can set a variable called \"baseUrl\" using the following script:\n```javascript\npm.collectionVariables.set(\"baseUrl\", \"https://api.example.com\");\n```\n"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"teste\",\r\n    \"menssage\": \"realizando teste\",\r\n    \"uuidCourse\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n    \"uuidUser\": \"505aad6a-b1a4-4677-942b-22096bc7e352\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/topic/:uuidTopic",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"topic",
+								":uuidTopic"
+							],
+							"variable": [
+								{
+									"key": "uuidTopic",
+									"value": "4672c11c-1742-4758-b84f-00ea67ca57f4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "lasted-create",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
